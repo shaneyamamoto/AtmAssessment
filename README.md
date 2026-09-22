@@ -1,4 +1,4 @@
-# Pencheck Assessment ATM
+# PenChecks Assessment ATM
 
 A web-based ATM for a single user with two accounts (checking and savings). Supports deposits, withdrawals and transfers between accounts, with a full transaction history for each.
 
