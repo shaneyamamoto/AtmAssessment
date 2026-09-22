@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Pure domain model: no framework or infrastructure dependencies. -->
+  <ItemGroup>
+    <!-- Account.Rehydrate sets a balance without a ledger entry, so only persistence and tests may call it. -->
+    <InternalsVisibleTo Include="Atm.Infrastructure" />
+    <InternalsVisibleTo Include="Atm.Tests" />
+  </ItemGroup>
+</Project>

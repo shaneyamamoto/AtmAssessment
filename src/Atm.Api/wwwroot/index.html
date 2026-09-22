@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pencheck Assessment ATM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#receipt">Skip to transaction history</a>
+
+  <div class="machine">
+    <header class="fascia">
+      <h1 class="brand">Pencheck Assessment ATM</h1>
+      <p class="today" id="today"></p>
+    </header>
+
+    <main class="machine-body">
+      <section class="screen" aria-labelledby="accounts-heading">
+        <h2 class="screen-title" id="accounts-heading">Choose an account</h2>
+        <div class="accounts" id="accounts" role="radiogroup" aria-labelledby="accounts-heading">
+          <p class="loading" role="status">Loading accounts…</p>
+        </div>
+
+        <form class="action" id="action-form" novalidate aria-describedby="form-status">
+          <fieldset class="segments">
+            <legend class="visually-hidden">What would you like to do?</legend>
+            <label><input type="radio" name="action" value="deposit" checked><span>Deposit</span></label>
+            <label><input type="radio" name="action" value="withdraw"><span>Withdraw</span></label>
+            <label><input type="radio" name="action" value="transfer"><span>Transfer</span></label>
+          </fieldset>
+
+          <div class="transfer-route" id="transfer-route" hidden>
+            <p id="route-text"></p>
+            <button type="button" class="link-button" id="swap" aria-describedby="route-text">Swap direction</button>
+          </div>
+
+          <label class="amount-label" for="amount">Amount in dollars</label>
+          <div class="amount-field">
+            <span aria-hidden="true">$</span>
+            <input id="amount" name="amount" inputmode="decimal" autocomplete="off" placeholder="0.00"
+                   aria-describedby="amount-hint amount-error">
+          </div>
+          <p class="hint" id="amount-hint"></p>
+          <p class="error" id="amount-error" role="alert"></p>
+
+          <div class="quick" role="group" aria-label="Quick amounts">
+            <button type="button" data-amount="20">$20</button>
+            <button type="button" data-amount="40">$40</button>
+            <button type="button" data-amount="60">$60</button>
+            <button type="button" data-amount="100">$100</button>
+            <button type="button" data-amount="200">$200</button>
+          </div>
+
+          <div class="keys">
+            <button type="button" class="key key-clear" id="clear">Clear</button>
+            <button type="submit" class="key key-confirm" id="confirm" aria-disabled="true">Deposit</button>
+          </div>
+
+          <p class="status" id="form-status" role="status"></p>
+        </form>
+      </section>
+
+      <div class="printer">
+        <div class="slot" aria-hidden="true"></div>
+        <section class="receipt" id="receipt" tabindex="0" aria-labelledby="receipt-title">
+          <header class="receipt-head">
+            <p class="receipt-bank" aria-hidden="true">PENCHECK ASSESSMENT ATM</p>
+            <h2 id="receipt-title">Transaction history</h2>
+            <p class="receipt-balance" id="receipt-balance"></p>
+          </header>
+          <ol class="entries" id="entries"></ol>
+          <button type="button" class="more" id="more" hidden>Show earlier transactions</button>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Polite announcements for changes that have no visible message of their own. -->
+  <div class="visually-hidden" id="announcer" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

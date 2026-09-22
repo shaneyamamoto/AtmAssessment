@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <ItemGroup>
+    <ProjectReference Include="..\Atm.Application\Atm.Application.csproj" />
+    <ProjectReference Include="..\Atm.Infrastructure\Atm.Infrastructure.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Atm.Tests" />
+  </ItemGroup>
+</Project>
